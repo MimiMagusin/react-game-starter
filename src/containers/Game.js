@@ -4,10 +4,11 @@ import getCurrentGame from '../actions/games/get'
 import fetchGames from '../actions/games/fetch'
 import subscribeToGames from '../actions/games/subscribe'
 
+
 class Game extends PureComponent {
   componentWillMount() {
-    const { game, fetchGames, getCurrentGame, subscribeToGames, subscribed } = this.props
-    const { gameId } = this.props.params
+    const { game, fetchGames, getCurrentGame, subscribeToGames, subscribed} = this.props
+    const { gameId } = this.props.match.params
 
     if (!game) fetchGames()
     getCurrentGame(gameId)
@@ -15,14 +16,13 @@ class Game extends PureComponent {
   }
 
   render() {
-    const { game } = this.props
+    const { game} = this.props
 
     if (!game) return null
 
     return (
       <div className="Game">
-        <h1>Game!</h1>
-        <p>This is where your game goes...</p>
+        <h1>Riddle!</h1>
       </div>
     )
   }
