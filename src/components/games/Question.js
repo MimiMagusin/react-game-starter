@@ -11,7 +11,7 @@ export class Question extends PureComponent {
     _id: PropTypes.string.isRequired,
     question: PropTypes.string.isRequired,
     answer: PropTypes.string.isRequired,
-
+    riddles: PropTypes.string.isRequired,
     fetchRiddles: PropTypes.func.isRequired,
 
   }
@@ -23,11 +23,11 @@ componentWillMount() {
 
 
 render() {
-  const { _id, question, answer } = this.props
+  const { _id, question, answer, riddles } = this.props
     return(
       <article className="Question">
         <div>
-          <p>{ this.props._id }</p>
+          <p>{ riddles.map(riddle => riddle.question )}</p>
         </div>
       </article>
     )
