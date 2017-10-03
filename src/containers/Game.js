@@ -4,6 +4,7 @@ import getCurrentGame from '../actions/games/get'
 import fetchGames from '../actions/games/fetch'
 import subscribeToGames from '../actions/games/subscribe'
 import Question from '../components/games/Question'
+import GuessEditor from '../components/games/Guess'
 
 
 class Game extends PureComponent {
@@ -25,6 +26,7 @@ class Game extends PureComponent {
       <div className="Game">
         <h1>Riddle!</h1>
         <Question />
+        <GuessEditor />
       </div>
     )
   }
