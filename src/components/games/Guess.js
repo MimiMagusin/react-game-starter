@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-//import Editor from 'react-medium-editor-es6'
+import Editor from 'medium-editor'
 //import toMarkdown from 'to-markdown' -> maybe for guess?
 //import { connect } from 'react-redux'
 import 'medium-editor/dist/css/medium-editor.css'
@@ -12,8 +12,8 @@ export class GuessEditor extends PureComponent {
     const {  guess, playerID } = props
 
     this.state = {
-      guess,
-      playerID,
+      guess: '',
+      playerID: "",
     }
   }
 
@@ -30,13 +30,13 @@ export class GuessEditor extends PureComponent {
   saveGuess() {
 
     const { guess, playerID } = this.state
-
     const Guess = {
       guess,
       playerID,
     }
-
-    this.props.save(Guess).bind(this)
+    this.props.guess(this.state.guess)
+    this.setState({})
+    this.props.save(guess)
 
     this.setState({
       guess: '',
