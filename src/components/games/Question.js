@@ -1,9 +1,9 @@
 // src/recipes/RecipeItem.js
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-//import { connect } from 'react-redux'
+import { connect } from 'react-redux'
 //import updateGame from '../actions/recipes/update'
-//import fetchRiddles from '../actions/games/fetch'
+import fetchRiddles from '../../actions/riddles/fetchRiddles'
 
 
 export class Question extends PureComponent {
@@ -11,20 +11,29 @@ export class Question extends PureComponent {
     _id: PropTypes.string.isRequired,
     question: PropTypes.string.isRequired,
     answer: PropTypes.string.isRequired,
+
+    fetchRiddles: PropTypes.func.isRequired,
+
   }
 
+componentWillMount() {
+        this.props.fetchRiddles()
+      }
 
-  render() {
-    const { _id, question, answer } = this.props
 
+
+render() {
+  const { _id, question, answer } = this.props
     return(
       <article className="Question">
         <div>
-          <p>Our question. Hopefully soon.</p>
+          <p>{ this.props._id }</p>
         </div>
       </article>
     )
   }
 }
 
-export default Question
+const mapStateToProps = ({ riddles }) => ({ riddles })
+
+export default connect(mapStateToProps, { fetchRiddles })(Question)
