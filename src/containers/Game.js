@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import getCurrentGame from '../actions/games/get'
 import fetchGames from '../actions/games/fetch'
 import subscribeToGames from '../actions/games/subscribe'
+import Question from '../components/games/Question'
 
 
 class Game extends PureComponent {
@@ -23,6 +24,7 @@ class Game extends PureComponent {
     return (
       <div className="Game">
         <h1>Riddle!</h1>
+        <Question />
       </div>
     )
   }
