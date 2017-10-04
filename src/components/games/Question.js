@@ -25,11 +25,12 @@ renderRiddle(riddle, index) {
   }
 
 render() {
+  const { riddles } = this.props
     return(
       <article className="Question">
         <div>
 
-          <p>{ this.props.riddles.map(this.renderRiddle.bind(this)) }</p>
+          <p>{ this.renderRiddle(this.props.riddles[1]) }</p>
         </div>
       </article>
     )
