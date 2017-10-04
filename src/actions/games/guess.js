@@ -1,9 +1,7 @@
-import letter from '../../components/Guess.js'
-
 export const GUESS = 'GUESS'
 
 
-export default () => ({
+export default (answer) => ({
   type: GUESS,
-  payload: letter
+  payload: answer
 })
