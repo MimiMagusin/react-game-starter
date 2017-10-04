@@ -6,12 +6,15 @@ import Riddle from './Riddle'
 import fetchRiddles from '../../actions/riddles/fetchRiddles'
 
 
+
 const PLACEHOLDER = 'Riddles Riddles Riddles'
 
 export class Question extends PureComponent {
   static propTypes = {
+
     riddles: PropTypes.string.isRequired,
     fetchRiddles: PropTypes.func.isRequired,
+
 
   }
 
@@ -31,6 +34,7 @@ render() {
         <div>
 
           <p>{ this.renderRiddle(this.props.riddles[1]) }</p>
+
         </div>
       </article>
     )
