@@ -17,27 +17,7 @@ class GuessAnswer extends PureComponent {
     if (event.keyCode === 13) {
       this.saveGuess()
     }
-    // this.setState({
-    //   answer: event.target.value
-    // })
   }
-
-
-  // validate() {
-  //   const isAnswerValid = this.validateAnswer()
-  //
-  //   this.setState({
-  //     errors: {
-  //       title: isAnswerValid ? null : 'Add your answer!',
-  //     }
-  //   })
-  //   return isAnswerValid
-  // }
-
-  // validateAnswer() {
-  //   const { answer } = this.state
-  //   return answer && answer.length > 0
-  // }
 
   saveGuess() {
 
@@ -45,21 +25,6 @@ class GuessAnswer extends PureComponent {
     this.props.guess(guess)
     this.refs.answer.value=null
 
-    // if (!this.validate()) return
-    //
-    // const {
-    //   answer
-    // } = this.state
-    //
-    // const guess = {
-    //   answer
-    // }
-    //
-    // this.props.save(guess)
-    //
-    // this.setState({
-    //   answer
-    // })
   }
 
   render() {
@@ -89,7 +54,5 @@ const mapStateToProps = ( { guess } ) => {
     guess
   }
 }
-
-//const mapDispatchToProps = { save: guess }
 
 export default connect(mapStateToProps, {guess})(GuessAnswer)
