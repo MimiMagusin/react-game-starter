@@ -1,9 +1,9 @@
-import { GUESS } from '../actions/guess'
+import { GUESS } from '../actions/games/guess'
 
 export default (state = [], { type, payload } = {}) => {
   switch (type) {
     case GUESS :
-    return [].push(payload)
+    return state.concat(payload)
 
       default :
           return state

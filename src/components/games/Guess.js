@@ -8,56 +8,58 @@ class GuessAnswer extends PureComponent {
   constructor(props) {
     super()
 
-    const { answer } = props // check why curly braces?
+    const answer = props
 
-    this.state = {
-      answer,
-    }
+    this.state = answer
   }
 
   updateAnswer(event) {
     if (event.keyCode === 13) {
-      event.preventDefault()
-      this.refs.summary.medium.elements[0].focus()
+      this.saveGuess()
     }
-    this.setState({
-      answer: event.target.value
-    })
+    // this.setState({
+    //   answer: event.target.value
+    // })
   }
 
 
-  validate() {
-    const isAnswerValid = this.validateAnswer()
+  // validate() {
+  //   const isAnswerValid = this.validateAnswer()
+  //
+  //   this.setState({
+  //     errors: {
+  //       title: isAnswerValid ? null : 'Add your answer!',
+  //     }
+  //   })
+  //   return isAnswerValid
+  // }
 
-    this.setState({
-      errors: {
-        title: isAnswerValid ? null : 'Add your answer!',
-      }
-    })
-    return isAnswerValid
-  }
-
-  validateAnswer() {
-    const { answer } = this.state
-    return answer && answer.length > 0
-  }
+  // validateAnswer() {
+  //   const { answer } = this.state
+  //   return answer && answer.length > 0
+  // }
 
   saveGuess() {
-    if (!this.validate()) return
 
-    const {
-      answer
-    } = this.state
+    const guess = this.refs.answer.value.toLowerCase()
+    this.props.guess(guess)
+    this.refs.answer.value=null
 
-    const guess = {
-      answer
-    }
-
-    this.props.save(guess)
-
-    this.setState({
-      answer
-    })
+    // if (!this.validate()) return
+    //
+    // const {
+    //   answer
+    // } = this.state
+    //
+    // const guess = {
+    //   answer
+    // }
+    //
+    // this.props.save(guess)
+    //
+    // this.setState({
+    //   answer
+    // })
   }
 
   render() {
@@ -69,6 +71,7 @@ class GuessAnswer extends PureComponent {
           ref="answer"
           className="answer"
           placeholder="Write your answer"
+          defaultValue={this.state.answer}
           value={this.state.answer}
           onChange={this.updateAnswer.bind(this)} />
 
@@ -81,6 +84,12 @@ class GuessAnswer extends PureComponent {
   }
 }
 
-const mapDispatchToProps = { save: guess }
+const mapStateToProps = ( { guess } ) => {
+  return {
+    guess
+  }
+}
 
-export default connect(null, mapDispatchToProps)(GuessAnswer)
+//const mapDispatchToProps = { save: guess }
+
+export default connect(mapStateToProps, {guess})(GuessAnswer)
