@@ -1,29 +1,46 @@
 // src/recipes/RecipeItem.js
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-//import { connect } from 'react-redux'
-//import updateGame from '../actions/recipes/update'
+import { connect } from 'react-redux'
+import Riddle from './Riddle'
+import fetchRiddles from '../../actions/riddles/fetchRiddles'
 
+
+
+const PLACEHOLDER = 'Riddles Riddles Riddles'
 
 export class Question extends PureComponent {
   static propTypes = {
-    _id: PropTypes.string,
-    question: PropTypes.string,
-    answer: PropTypes.string
+
+    riddles: PropTypes.string.isRequired,
+    fetchRiddles: PropTypes.func.isRequired,
+
+
   }
 
+componentWillMount() {
+        this.props.fetchRiddles()
+      }
 
-  render() {
-    const { _id, question, answer } = this.props
+renderRiddle(riddle, index) {
+    return <Riddle
+      key={index} { ...riddle } />
+  }
 
+render() {
+  const { riddles } = this.props
     return(
       <article className="Question">
         <div>
-          <p>Our question. Hopefully soon</p>
+
+          <p>{ this.renderRiddle(this.props.riddles[1]) }</p>
+
         </div>
       </article>
     )
   }
 }
 
-export default Question
+const mapStateToProps = ({ riddles }) => ({ riddles })
+
+export default connect(mapStateToProps, { fetchRiddles })(Question)
