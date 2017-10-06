@@ -6,6 +6,7 @@ import subscribeToGames from '../actions/games/subscribe'
 import Riddle from '../components/games/Riddle'
 import GuessEditor from '../components/games/Guess'
 import StartGame from '../components/games/StartGame'
+import './Game.css'
 
 
 class Game extends PureComponent {
@@ -51,10 +52,10 @@ class Game extends PureComponent {
 
     return (
       <div className="Game">
-        <h1>Riddle!</h1>
+        <h1 className="Riddle">Riddle!</h1>
 
-        <div><p>{this.lastRiddle()}</p></div>
-      
+        <div className="Question"><p>{this.lastRiddle()}</p></div>
+
         <GuessEditor />
       </div>
     )

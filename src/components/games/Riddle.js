@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 
 
+
 export class Riddle extends PureComponent {
   static propTypes = {
     question: PropTypes.string.isRequired,
@@ -13,7 +14,7 @@ export class Riddle extends PureComponent {
       return(
         <article className="Riddles">
           <header>
-            <h1>{ question }</h1>
+            <h1 className="question">{ question }</h1>
           </header>
           </article>
       )

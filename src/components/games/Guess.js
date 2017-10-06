@@ -2,6 +2,13 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import guess from '../../actions/games/guess'
+import RaisedButton from 'material-ui/RaisedButton';
+
+
+const style = {
+  margin: 12,
+};
+
 
 
 class GuessAnswer extends PureComponent {
@@ -42,7 +49,7 @@ class GuessAnswer extends PureComponent {
 
 
         <div className="actions">
-          <button className="primary" onClick={this.saveGuess.bind(this)}>Submit Answer!</button>
+          <RaisedButton label="Submit Answer!" primary={true} style={style} onClick={this.saveGuess.bind(this)}/>
         </div>
       </div>
     )
