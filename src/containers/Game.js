@@ -32,7 +32,7 @@ class Game extends PureComponent {
     return (
       <div className="Game">
         <h1>Riddle!</h1>
-      <div>{ game.riddles.map(this.renderRiddle) }</div>
+      
         <GuessEditor />
         <StartGame />
       </div>
