@@ -18,11 +18,14 @@ class Game extends PureComponent {
   }
 
   renderRiddle(riddle, index) {
-      return <Riddle
-        key={index} { ...riddle } />
-    }
+    return <Riddle
+      key={index} { ...riddle } />
+  }
 
-
+  lastRiddle() {
+    const { currentPlayer } = this.props
+    return currentPlayer.question[currentPlayer.question.length - 1]
+  }
 
   render() {
     const { game, currentPlayer } = this.props
@@ -49,7 +52,7 @@ class Game extends PureComponent {
     return (
       <div className="Game">
         <h1>Riddle!</h1>
-        <div><p>{this.props.currentPlayer.question[0]}</p></div>
+        <div><p>{this.lastRiddle()}</p></div>
         <GuessEditor />
       </div>
     )
