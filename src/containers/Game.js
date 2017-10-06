@@ -25,14 +25,22 @@ class Game extends PureComponent {
 
 
   render() {
-    const { game } = this.props
+    const { game, currentPlayer, currentUser } = this.props
 
     if (!game) return null
+
+    if (!currentPlayer) {
+      return (
+        <div className="Game">
+          <h1>Riddle!</h1>
+        </div>
+      )
+    }
 
     return (
       <div className="Game">
         <h1>Riddle!</h1>
-      <div>{ game.riddles.map(this.renderRiddle) }</div>
+        <div><p>{this.props.currentPlayer.question[0]}</p></div>
         <GuessEditor />
         <StartGame />
       </div>
@@ -47,7 +55,6 @@ const mapStateToProps = ({ currentUser, currentGame, games, subscriptions }) => 
   return {
     currentPlayer,
     game,
-    hasTurn: currentPlayer && currentPlayer._id === currentUser._id,
     subscribed: subscriptions.includes('games'),
   }
 }
