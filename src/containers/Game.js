@@ -36,7 +36,7 @@ class Game extends PureComponent {
     if (!currentPlayer) {
       return (
         <div className="Game">
-          <h1>Riddle!</h1>
+          <h1 className="Riddle">Riddle!</h1>
           <p>Join the game...</p>
           <p>Coming up soon!</p>
         </div>
@@ -45,7 +45,7 @@ class Game extends PureComponent {
 
     if (game.started === false) return (
       <div className="Game">
-        <h1>Riddle!</h1>
+        <h1 className="Riddle">Riddle!</h1>
         <StartGame />
       </div>
     )
