@@ -25,7 +25,7 @@ class Game extends PureComponent {
 
 
   render() {
-    const { game, currentPlayer, currentUser } = this.props
+    const { game, currentPlayer } = this.props
 
     if (!game) return null
 
@@ -33,16 +33,24 @@ class Game extends PureComponent {
       return (
         <div className="Game">
           <h1>Riddle!</h1>
+          <p>Join the game...</p>
+          <p>Coming up soon!</p>
         </div>
       )
     }
+
+    if (game.started === false) return (
+      <div className="Game">
+        <h1>Riddle!</h1>
+        <StartGame />
+      </div>
+    )
 
     return (
       <div className="Game">
         <h1>Riddle!</h1>
         <div><p>{this.props.currentPlayer.question[0]}</p></div>
         <GuessEditor />
-        <StartGame />
       </div>
     )
   }
