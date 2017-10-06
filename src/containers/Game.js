@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import getCurrentGame from '../actions/games/get'
 import fetchGames from '../actions/games/fetch'
 import subscribeToGames from '../actions/games/subscribe'
-import Question from '../components/games/Question'
+import Riddle from '../components/games/Riddle'
 import GuessEditor from '../components/games/Guess'
 
 
@@ -17,6 +17,13 @@ class Game extends PureComponent {
     if (!subscribed) subscribeToGames()
   }
 
+  renderRiddle(riddle, index) {
+      return <Riddle
+        key={index} { ...riddle } />
+    }
+
+
+
   render() {
     const { game} = this.props
 
@@ -25,7 +32,7 @@ class Game extends PureComponent {
     return (
       <div className="Game">
         <h1>Riddle!</h1>
-        <Question />
+      <div>{ game.riddles.map(this.renderRiddle) }</div>
         <GuessEditor />
       </div>
     )
