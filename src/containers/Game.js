@@ -5,13 +5,13 @@ import fetchGames from '../actions/games/fetch'
 import subscribeToGames from '../actions/games/subscribe'
 import Riddle from '../components/games/Riddle'
 import GuessEditor from '../components/games/Guess'
+import StartGame from '../components/games/StartGame'
 
 
 class Game extends PureComponent {
   componentWillMount() {
     const { game, fetchGames, getCurrentGame, subscribeToGames, subscribed} = this.props
     const { gameId } = this.props.match.params
-
     if (!game) fetchGames()
     getCurrentGame(gameId)
     if (!subscribed) subscribeToGames()
@@ -25,7 +25,7 @@ class Game extends PureComponent {
 
 
   render() {
-    const { game} = this.props
+    const { game } = this.props
 
     if (!game) return null
 
@@ -34,6 +34,7 @@ class Game extends PureComponent {
         <h1>Riddle!</h1>
       <div>{ game.riddles.map(this.renderRiddle) }</div>
         <GuessEditor />
+        <StartGame />
       </div>
     )
   }
