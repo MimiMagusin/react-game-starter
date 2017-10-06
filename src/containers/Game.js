@@ -18,23 +18,42 @@ class Game extends PureComponent {
   }
 
   renderRiddle(riddle, index) {
-      return <Riddle
-        key={index} { ...riddle } />
-    }
+    return <Riddle
+      key={index} { ...riddle } />
+  }
 
-
+  lastRiddle() {
+    const { currentPlayer } = this.props
+    return currentPlayer.question[currentPlayer.question.length - 1]
+  }
 
   render() {
-    const { game } = this.props
+    const { game, currentPlayer } = this.props
 
     if (!game) return null
+
+    if (!currentPlayer) {
+      return (
+        <div className="Game">
+          <h1>Riddle!</h1>
+          <p>Join the game...</p>
+          <p>Coming up soon!</p>
+        </div>
+      )
+    }
+
+    if (game.started === false) return (
+      <div className="Game">
+        <h1>Riddle!</h1>
+        <StartGame />
+      </div>
+    )
 
     return (
       <div className="Game">
         <h1>Riddle!</h1>
-      <div>{ game.riddles.map(this.renderRiddle) }</div>
+        <div><p>{this.lastRiddle()}</p></div>
         <GuessEditor />
-        <StartGame />
       </div>
     )
   }
@@ -47,7 +66,6 @@ const mapStateToProps = ({ currentUser, currentGame, games, subscriptions }) => 
   return {
     currentPlayer,
     game,
-    hasTurn: currentPlayer && currentPlayer._id === currentUser._id,
     subscribed: subscriptions.includes('games'),
   }
 }
