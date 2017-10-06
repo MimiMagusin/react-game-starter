@@ -6,6 +6,7 @@ import subscribeToGames from '../actions/games/subscribe'
 import Riddle from '../components/games/Riddle'
 import GuessEditor from '../components/games/Guess'
 import StartGame from '../components/games/StartGame'
+import './Game.css'
 
 
 class Game extends PureComponent {
@@ -35,7 +36,7 @@ class Game extends PureComponent {
     if (!currentPlayer) {
       return (
         <div className="Game">
-          <h1>Riddle!</h1>
+          <h1 className="Riddle">Riddle!</h1>
           <p>Join the game...</p>
           <p>Coming up soon!</p>
         </div>
@@ -44,17 +45,17 @@ class Game extends PureComponent {
 
     if (game.started === false) return (
       <div className="Game">
-        <h1>Riddle!</h1>
+        <h1 className="Riddle">Riddle!</h1>
         <StartGame />
       </div>
     )
 
     return (
       <div className="Game">
-        <h1>Riddle!</h1>
+        <h1 className="Riddle">Riddle!</h1>
 
-        <div><p>{this.lastRiddle()}</p></div>
-      
+        <div className="Question"><p>{this.lastRiddle()}</p></div>
+
         <GuessEditor />
       </div>
     )
