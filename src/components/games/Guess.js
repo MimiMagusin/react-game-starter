@@ -20,9 +20,9 @@ class GuessAnswer extends PureComponent {
   }
 
   saveGuess() {
-
+    const { currentGame } = this.props
     const guess = this.refs.answer.value.toLowerCase()
-    this.props.guess(guess)
+    this.props.guess(currentGame, guess)
     this.refs.answer.value=null
 
   }
@@ -49,9 +49,10 @@ class GuessAnswer extends PureComponent {
   }
 }
 
-const mapStateToProps = ( { guess } ) => {
+const mapStateToProps = ( { guess, currentGame } ) => {
   return {
-    guess
+    guess,
+    currentGame
   }
 }
 
