@@ -9,6 +9,11 @@ class StartGameButton extends PureComponent {
     signedIn: PropTypes.bool,
   }
 
+  start = () => {
+    const { startGame, currentGame } = this.props
+    startGame(currentGame)
+  }
+
   render() {
     if (!this.props.signedIn) return null
 
@@ -17,14 +22,14 @@ class StartGameButton extends PureComponent {
         <RaisedButton
           label="Start Game"
           primary={true}
-          onClick={this.props.startGame} />
+          onClick={this.start} />
       </div>
     )
   }
 }
 
-const mapStateToProps = ({ currentUser }) => ({
-  signedIn: !!currentUser && !!currentUser._id,
+const mapStateToProps = ({ currentUser, currentGame }) => ({
+  signedIn: !!currentUser && !!currentUser._id, currentGame
 })
 
 export default connect(mapStateToProps, { startGame })(StartGameButton)
