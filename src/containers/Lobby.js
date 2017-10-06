@@ -56,6 +56,17 @@ class Lobby extends PureComponent {
   }
 
   render() {
+    if (!this.props.currentUser) {
+      return (
+        <div className="Lobby">
+          <Paper className="paper">
+            <Menu>
+              <p>Sign in to join the lobby!</p>
+            </Menu>
+          </Paper>
+        </div>
+      )
+    }
     return (
       <div className="Lobby">
         <h1>Lobby!</h1>
