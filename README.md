@@ -1,4 +1,4 @@
-This project should be combined with riddle-api! Clone both to get the full experience of this group project! Still a work in progress!
+This project should be combined with riddle-api! Clone both to get the full experience of this group project! Still a work in progress! 
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
